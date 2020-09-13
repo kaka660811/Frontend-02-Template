@@ -1,0 +1,23 @@
+<script>
+    let object = {
+        a: 1,
+        b: 2
+    }
+
+    let po = reactive(object)
+
+    // po的值改变并不能直接去修改，而是需要通过其中的hook去修改的
+    function reactive(object){
+        return new Proxy(object, {
+            set(obj, prop, value){
+                obj[prop] = value
+                console.log(obj,prop, value)
+                return obj
+            },
+            get(obj, prop){
+                console.log(obj, prop)
+                return obj[prop]
+            }
+        })
+    }
+</script>

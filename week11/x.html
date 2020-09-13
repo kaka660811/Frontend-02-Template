@@ -1,0 +1,12 @@
+<script>
+    let object = {
+        a: 1,
+        b: 2
+    }
+    const po = new Proxy(object, {
+        set(obj, prop, value){
+            console.log(obj, prop, value)
+        }
+    })
+
+</script>
